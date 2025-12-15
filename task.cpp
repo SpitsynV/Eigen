@@ -41,7 +41,7 @@ void Reflection(int n, std::vector<std::vector<double>>& A)
 
 		tmp2 = sqrt(A[i + 1][i] * A[i + 1][i] + tmp1);
 
-		if (tmp2 < 1e-100)
+		if (tmp2 < std::numeric_limits<double>::epsilon()) //1e-100 -> std::numeric_limits epsilon
 		{
 			A[i + 1][i] = 0.0;
 			A[i + 2][i] = 0.0;
@@ -49,7 +49,7 @@ void Reflection(int n, std::vector<std::vector<double>>& A)
 			continue;
 		}
 
-		if (tmp1 < 1e-100)
+		if (tmp1 < std::numeric_limits<double>::epsilon())
 		{
 			A[i + 2][i] = 0.0;
 
@@ -114,7 +114,7 @@ void MakeDecomposition(int n, std::vector<std::vector<double>>& A, int k)
 	{
 		tmp = A[i][i] - (i > 0 ? A[i][i-1] * A[i][i-1] : 0.0);
 
-		if (tmp < 1e-100)
+		if (tmp < std::numeric_limits<double>::epsilon())
 			tmp = 1e-10;
 
             A[i][i] = sqrt(tmp);
@@ -124,7 +124,7 @@ void MakeDecomposition(int n, std::vector<std::vector<double>>& A, int k)
 
 	tmp = A[k-1][k-1] - A[k-1][k-2] * A[k-1][k-2];
 
-	if (tmp < 1e-100)
+	if (tmp < std::numeric_limits<double>::epsilon())
 		tmp = sqrt(tmp);
 
         A[k-1][k-1] = sqrt(tmp);

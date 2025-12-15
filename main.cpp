@@ -79,5 +79,7 @@ int main(int argc, char* argv[]) {
 
     std::cout << "Норма невязки 1: " << std::scientific << e1 << std::endl;
     std::cout << "Норма невязки 2: " << std::scientific << e2 << std::endl;
+
+
     return 0;
 }
